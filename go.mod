@@ -1,6 +1,6 @@
 module github.com/poi1649/go-racing-car
 
-go 1.21.5
+go 1.25.3
 
 require github.com/stretchr/testify v1.8.4
 

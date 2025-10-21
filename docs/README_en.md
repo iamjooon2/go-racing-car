@@ -15,7 +15,7 @@
 
 ### Test Execution Guide
 
-- Run go version in the terminal to confirm that the version is 1.21.5.
+- Run go version in the terminal to confirm that the version is 1.25.3.
 - Run the command go test in the terminal and make sure all tests pass as shown below.
 
 ```
@@ -101,7 +101,7 @@ Final winners: poi, phili
 --- 
 ## 🎯 Programming Requirements
 
-- The program must run on Go version 1.21.5.
+- The program must run on Go version 1.25.3.
 - The entry point of the program is the main() function in application.go.
 - Follow the [Official Go Coding Guide](https://go.dev/doc/effective_go) and [Banksalad Go Coding Convention](https://blog.banksalad.com/tech/go-best-practice-in-banksalad/)
 - Before committing, always use `gofmt` to format your code.
