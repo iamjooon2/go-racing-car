@@ -8,7 +8,7 @@ import (
 const (
 	INITIAL_POSITION = 0
 
-	MAXIMUM_NAME_LENGTH = 7
+	MAXIMUM_NAME_LENGTH = 8
 
 	THROTTLE = 4
 )
@@ -32,7 +32,7 @@ func NewCar(name string) (*Car, error) {
 
 func validate(input string) error {
 	if input == "" || len(input) > MAXIMUM_NAME_LENGTH {
-		return errors.New("invalid car name input. length must be at most " + strconv.Itoa(MAXIMUM_NAME_LENGTH))
+		return errors.New("invalid car name input. name length must be at smaller than " + strconv.Itoa(MAXIMUM_NAME_LENGTH))
 	}
 	return nil
 }
