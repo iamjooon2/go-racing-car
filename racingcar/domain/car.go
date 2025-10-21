@@ -42,3 +42,11 @@ func (c *Car) Move(randomValue int) {
 		c.position++
 	}
 }
+
+func (c *Car) Name() string {
+	return c.name
+}
+
+func (c *Car) Position() int {
+	return c.position
+}
