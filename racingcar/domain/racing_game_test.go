@@ -10,19 +10,19 @@ func TestFindWinners(t *testing.T) {
 	testCases := []struct {
 		description string
 		game        RacingGame
-		expected    []Car
+		expected    []*Car
 	}{
 		{
 			description: "find multiple winners",
 			game: RacingGame{
-				Cars: []Car{
+				Cars: []*Car{
 					{name: "junhee", position: 1},
 					{name: "moritz", position: 2},
 					{name: "shaheen", position: 2},
 				},
-				Trial: Trial{value: 1},
+				Trial: &Trial{value: 1},
 			},
-			expected: []Car{
+			expected: []*Car{
 				{name: "moritz", position: 2},
 				{name: "shaheen", position: 2},
 			},
@@ -30,14 +30,14 @@ func TestFindWinners(t *testing.T) {
 		{
 			description: "find single winner",
 			game: RacingGame{
-				Cars: []Car{
+				Cars: []*Car{
 					{name: "junhee", position: 3},
 					{name: "moritz", position: 2},
 					{name: "shaheen", position: 1},
 				},
-				Trial: Trial{value: 1},
+				Trial: &Trial{value: 1},
 			},
-			expected: []Car{
+			expected: []*Car{
 				{name: "junhee", position: 3},
 			},
 		},
