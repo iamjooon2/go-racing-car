@@ -10,8 +10,16 @@ import (
 const (
 	MOVE_UNIT               = "-"
 	WINNER_NAME_DELIMITER   = ","
-	NAME_POSITION_DELIMITER = ":"
+	NAME_POSITION_DELIMITER = " : "
 )
+
+func PrintRaceResult() {
+	fmt.Println("Racing Result")
+}
+
+func PrintEnter() {
+	fmt.Println()
+}
 
 func PrintRace(cars []*domain.Car) {
 	for _, car := range cars {
@@ -23,7 +31,7 @@ func PrintRace(cars []*domain.Car) {
 }
 
 func PrintWinners(winningCars []*domain.Car) {
-	fmt.Print("Find winners: ")
+	fmt.Print("Final winners: ")
 
 	var winners []string
 	for _, winCar := range winningCars {

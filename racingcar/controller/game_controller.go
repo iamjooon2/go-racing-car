@@ -12,10 +12,13 @@ func Run() {
 	trial := generateTrial(view.ReadAttempts())
 
 	game := domain.NewRacingGame(cars, trial)
+
+	view.PrintRaceResult()
 	for trial.IsRemain() {
 		game.PlayOneTime()
 
 		view.PrintRace(game.GetCars())
+		view.PrintEnter()
 	}
 
 	view.PrintWinners(game.FindWinners())

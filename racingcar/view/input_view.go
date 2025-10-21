@@ -12,29 +12,38 @@ import (
 func ReadNames() []string {
 	fmt.Println("Enter the names of the cars to race. (Names are separated by commas)")
 
-	reader := bufio.NewReader(os.Stdin)
-	input, err := reader.ReadString('\n')
-	if err != nil {
-		log.Fatal(err)
+	scanner := bufio.NewScanner(os.Stdin)
+	if scanner.Scan() {
+		input := scanner.Text() // eliminate entering new lines
+		names := strings.Split(input, ",")
+		for i := range names {
+			names[i] = strings.TrimSpace(names[i])
+		}
+		return names
 	}
 
-	return strings.Split(input, ",")
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return nil
 }
 
 func ReadAttempts() int {
 	fmt.Println("How many attempts?")
 
-	reader := bufio.NewReader(os.Stdin)
-	input, err := reader.ReadString('\n')
+	scanner := bufio.NewScanner(os.Stdin)
+	if scanner.Scan() {
+		input := scanner.Text() // eliminate entering new lines
+		attempts, err := strconv.Atoi(strings.TrimSpace(input))
+		if err != nil {
+			log.Println("Invalid number, using 0")
+			return 0
+		}
+		return attempts
+	}
 
-	if err != nil {
+	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-
-	attempts, err := strconv.Atoi(input)
-	if err != nil {
-		log.Println(err)
-	}
-
-	return attempts
+	return 0
 }
