@@ -2,7 +2,7 @@
 ## domain
 
 ### Trial
-- [ ] trial must be greater than 0
+- [x] trial must be greater than 0
 - [ ] For a given number of Trial, n cars can either move forward or stop.
 - [ ] The user must be able to input how many rounds the race will run.
 
