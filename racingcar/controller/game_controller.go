@@ -7,9 +7,9 @@ import (
 	"github.com/poi1649/go-racing-car/racingcar/view"
 )
 
-func run() {
-	trial := generateTrial(view.ReadAttempts())
+func Run() {
 	cars := generateCars(view.ReadNames())
+	trial := generateTrial(view.ReadAttempts())
 
 	game := domain.NewRacingGame(cars, trial)
 	for trial.IsRemain() {
