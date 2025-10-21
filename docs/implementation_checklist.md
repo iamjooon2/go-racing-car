@@ -7,8 +7,8 @@
 - [ ] The user must be able to input how many rounds the race will run.
 
 ### Car
-- [ ] Car names are separated by commas (,), and each name must not exceed 5 characters.
-- [ ] A car moves forward when a random number between 0 and 9 is greater than or equal to 4.
+- [ ] Car names are separated by commas (,), and each name must not exceed 7 characters.
+- [x] A car moves forward when a random number between 0 and 9 is greater than or equal to 4.
 
 ### Racing Game
 - [ ] After the race, the program should announce the winner(s). There can be one or multiple winners.
