@@ -17,7 +17,7 @@
 ## view
 
 ### input
-- [ ] If invalid input is entered, the program should panic and terminate. (To be revised later.)
+- [x] If invalid input is entered, the program should panic and terminate. (To be revised later.)
 - [x] get car names with commas
 - [x] get trial of the racing game
 

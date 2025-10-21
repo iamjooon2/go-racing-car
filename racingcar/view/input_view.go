@@ -3,7 +3,6 @@ package view
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"strings"
@@ -23,9 +22,9 @@ func ReadNames() []string {
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-	return nil
+	panic("Failed to read names")
 }
 
 func ReadAttempts() int {
@@ -36,14 +35,13 @@ func ReadAttempts() int {
 		input := scanner.Text() // eliminate entering new lines
 		attempts, err := strconv.Atoi(strings.TrimSpace(input))
 		if err != nil {
-			log.Println("Invalid number, using 0")
-			return 0
+			panic(err)
 		}
 		return attempts
 	}
 
 	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
-	return 0
+	panic("Failed to read attempts")
 }
