@@ -6,11 +6,11 @@ import (
 )
 
 const (
-	INITIAL_POSITION = 0
+	InitialPosition = 0
 
-	MAXIMUM_NAME_LENGTH = 8
+	MaximumNameLength = 8
 
-	THROTTLE = 4
+	Throttle = 4
 )
 
 type Car struct {
@@ -26,19 +26,19 @@ func NewCar(name string) (*Car, error) {
 
 	return &Car{
 		name:     name,
-		position: INITIAL_POSITION,
+		position: InitialPosition,
 	}, nil
 }
 
 func validate(input string) error {
-	if input == "" || len(input) > MAXIMUM_NAME_LENGTH {
-		return errors.New("invalid car name input. name length must be at smaller than " + strconv.Itoa(MAXIMUM_NAME_LENGTH))
+	if input == "" || len(input) > MaximumNameLength {
+		return errors.New("invalid car name input. name length must be at smaller than " + strconv.Itoa(MaximumNameLength))
 	}
 	return nil
 }
 
 func (c *Car) Move(randomValue int) {
-	if randomValue >= THROTTLE {
+	if randomValue >= Throttle {
 		c.position++
 	}
 }

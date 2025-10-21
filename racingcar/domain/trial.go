@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	MINIMUM_TRIAL_VALUE = 0
+	MinimumTrialValue = 0
 )
 
 type Trial struct {
@@ -14,8 +14,8 @@ type Trial struct {
 }
 
 func NewTrial(value int) (*Trial, error) {
-	if value <= MINIMUM_TRIAL_VALUE {
-		return nil, errors.New("trial value must be greater than " + strconv.Itoa(MINIMUM_TRIAL_VALUE))
+	if value <= MinimumTrialValue {
+		return nil, errors.New("trial value must be greater than " + strconv.Itoa(MinimumTrialValue))
 	}
 	return &Trial{value: value}, nil
 }
