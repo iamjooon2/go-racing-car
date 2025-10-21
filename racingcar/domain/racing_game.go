@@ -15,9 +15,8 @@ func NewRacingGame(cars []*Car, trial *Trial) RacingGame {
 }
 
 func (r RacingGame) PlayOneTime() {
-	randomInput := util.GenerateRandomNumber()
-
 	for _, car := range r.Cars {
+		randomInput := util.GenerateRandomNumber()
 		car.Move(randomInput)
 	}
 
