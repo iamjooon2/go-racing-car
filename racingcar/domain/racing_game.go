@@ -24,11 +24,11 @@ func NewRacingGame(cars []*Car, trial *Trial) (*RacingGame, error) {
 
 func validateDuplicatedName(cars []*Car) error {
 	// why here are no set data structure in golang?!
-	var set = make(map[string]bool)
+	var set = make(map[string]struct{})
 	for _, car := range cars {
-		set[car.Name()] = true
+		set[car.Name()] = struct{}{} // struct use less memory than bool
+		// value
 	}
-
 	if len(set) != len(cars) {
 		return errors.New("duplicated car names")
 	}
