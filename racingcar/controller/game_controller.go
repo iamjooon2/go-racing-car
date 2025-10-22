@@ -8,12 +8,21 @@ import (
 )
 
 func Run() {
-	cars := generateCars(view.ReadNames())
-	trial := generateTrial(view.ReadAttempts())
+	cars, err := generateCars(view.ReadNames())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	trial, err := generateTrial(view.ReadAttempts())
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	game, err := domain.NewRacingGame(cars, trial)
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
 
 	view.PrintRaceResult()
@@ -27,23 +36,23 @@ func Run() {
 	view.PrintWinners(game.FindWinners())
 }
 
-func generateTrial(inputAttempts int) *domain.Trial {
+func generateTrial(inputAttempts int) (*domain.Trial, error) {
 	trial, err := domain.NewTrial(inputAttempts)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
 	}
-	return trial
+	return trial, nil
 }
 
-func generateCars(inputNames []string) []*domain.Car {
+func generateCars(inputNames []string) ([]*domain.Car, error) {
 	var cars []*domain.Car
 	for _, inputName := range inputNames {
 		car, err := domain.NewCar(inputName)
 		if err != nil {
-			fmt.Println(err)
+			return nil, err
 		}
 
 		cars = append(cars, car)
 	}
-	return cars
+	return cars, nil
 }
