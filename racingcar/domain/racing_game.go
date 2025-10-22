@@ -2,23 +2,23 @@ package domain
 
 import (
 	"errors"
-
-	"github.com/poi1649/go-racing-car/racingcar/util"
 )
 
 type RacingGame struct {
-	Trial *Trial
-	Cars  []*Car
+	Trial           *Trial
+	Cars            []*Car
+	NumberGenerator NumberGenerator
 }
 
-func NewRacingGame(cars []*Car, trial *Trial) (*RacingGame, error) {
+func NewRacingGame(cars []*Car, trial *Trial, numberGenerator NumberGenerator) (*RacingGame, error) {
 	err := validateDuplicatedName(cars)
 	if err != nil {
 		return nil, err
 	}
 	return &RacingGame{
-		Trial: trial,
-		Cars:  cars,
+		Trial:           trial,
+		Cars:            cars,
+		NumberGenerator: numberGenerator,
 	}, nil
 }
 
@@ -27,7 +27,6 @@ func validateDuplicatedName(cars []*Car) error {
 	var set = make(map[string]struct{})
 	for _, car := range cars {
 		set[car.Name()] = struct{}{} // struct use less memory than bool
-		// value
 	}
 	if len(set) != len(cars) {
 		return errors.New("duplicated car names")
@@ -37,7 +36,7 @@ func validateDuplicatedName(cars []*Car) error {
 
 func (r RacingGame) PlayOneTime() {
 	for _, car := range r.Cars {
-		randomInput := util.GenerateRandomNumber()
+		randomInput := r.NumberGenerator.Generate()
 		car.Move(randomInput)
 	}
 

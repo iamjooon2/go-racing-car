@@ -17,7 +17,9 @@ func TestNewRacingGame_WhenCarNameIsDuplicated_Failure(t *testing.T) {
 
 	trial, _ := NewTrial(3)
 
-	game, err := NewRacingGame(cars, trial)
+	generator := &FixedNumberGenerator{}
+
+	game, err := NewRacingGame(cars, trial, generator)
 
 	assert.Nil(t, game)
 	assert.NotNil(t, err)

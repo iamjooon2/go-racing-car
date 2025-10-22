@@ -19,7 +19,7 @@ func Run() {
 		return
 	}
 
-	game, err := domain.NewRacingGame(cars, trial)
+	game, err := domain.NewRacingGame(cars, trial, &domain.RandomNumberGenerator{})
 	if err != nil {
 		fmt.Println(err)
 		return
