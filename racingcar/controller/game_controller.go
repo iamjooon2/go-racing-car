@@ -11,7 +11,10 @@ func Run() {
 	cars := generateCars(view.ReadNames())
 	trial := generateTrial(view.ReadAttempts())
 
-	game := domain.NewRacingGame(cars, trial)
+	game, err := domain.NewRacingGame(cars, trial)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	view.PrintRaceResult()
 	for trial.IsRemain() {

@@ -6,6 +6,23 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestNewRacingGame_WhenCarNameIsDuplicated_Failure(t *testing.T) {
+	cars := []*Car{}
+	car1, _ := NewCar("junhee")
+	car2, _ := NewCar("junhee")
+	car3, _ := NewCar("junhee")
+	cars = append(cars, car1)
+	cars = append(cars, car2)
+	cars = append(cars, car3)
+
+	trial, _ := NewTrial(3)
+
+	game, err := NewRacingGame(cars, trial)
+
+	assert.Nil(t, game)
+	assert.NotNil(t, err)
+}
+
 func TestFindWinners(t *testing.T) {
 	testCases := []struct {
 		description string

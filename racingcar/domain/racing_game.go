@@ -1,17 +1,38 @@
 package domain
 
-import "github.com/poi1649/go-racing-car/racingcar/util"
+import (
+	"errors"
+
+	"github.com/poi1649/go-racing-car/racingcar/util"
+)
 
 type RacingGame struct {
 	Trial *Trial
 	Cars  []*Car
 }
 
-func NewRacingGame(cars []*Car, trial *Trial) RacingGame {
-	return RacingGame{
+func NewRacingGame(cars []*Car, trial *Trial) (*RacingGame, error) {
+	err := validateDuplicatedName(cars)
+	if err != nil {
+		return nil, err
+	}
+	return &RacingGame{
 		Trial: trial,
 		Cars:  cars,
+	}, nil
+}
+
+func validateDuplicatedName(cars []*Car) error {
+	// why here are no set data structure in golang?!
+	var set = make(map[string]bool)
+	for _, car := range cars {
+		set[car.Name()] = true
 	}
+
+	if len(set) != len(cars) {
+		return errors.New("duplicated car names")
+	}
+	return nil
 }
 
 func (r RacingGame) PlayOneTime() {
